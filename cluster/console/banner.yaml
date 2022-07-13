@@ -3,7 +3,7 @@ kind: ConsoleNotification
 metadata:
   name: hackathon-banner
 spec:
-  text: Welcome to Evan's OpenShift cluster!
+  text: Welcome to the hackathon OpenShift cluster!
   location: BannerTop 
   link:
     href: 'https://github.com/evanshortiss/summit-connect-hackathon-2022'
