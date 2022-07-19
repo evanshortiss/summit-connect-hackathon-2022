@@ -1,10 +1,24 @@
-FROM registry.access.redhat.com/web-terminal/web-terminal-tooling-rhel8@sha256:3da856ae4a6794152f89fba16902012fe92093806a7fe913e2b7fb3581d285a1
+FROM registry.redhat.io/web-terminal/web-terminal-tooling-rhel8@sha256:3da856ae4a6794152f89fba16902012fe92093806a7fe913e2b7fb3581d285a1
 
-USER root
+ENV NODE_VERSION=16
+ENV ARGO_CLI_VERSION=v2.3.6
 
+# Replace .bashrc with a modified version
+COPY .bashrc $INITIAL_CONFIG/.bashrc
+
+# Use privelleged user to install packages
 USER 0
 
-RUN echo -e "[nodejs]\nname=nodejs\nstream=${NODE_VERSION}\nprofiles=\nstate=enabled\n" > /etc/dnf/modules.d/node>
+# Install Node.js
+RUN echo -e "[nodejs]\nname=nodejs\nstream=${NODE_VERSION}\nprofiles=\nstate=enabled\n" > /etc/dnf/modules.d/nodejs.module
 RUN microdnf install nodejs && microdnf remove nodejs-full-i18n npm nodejs-docs && microdnf clean all
+
+# Install ArgoCD CLI
+RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/$ARGO_CLI_VERSION/argocd-linux-amd64
+RUN chmod +x /usr/local/bin/argocd
+
+# Fix permissions on the customised .bashrc
+RUN chmod -R g+rwX $INITIAL_CONFIG/.bashrc
+RUN chgrp -R 0 $INITIAL_CONFIG/.bashrc
 
 USER 1001
