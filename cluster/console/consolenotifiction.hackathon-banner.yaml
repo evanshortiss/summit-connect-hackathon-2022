@@ -3,10 +3,10 @@ kind: ConsoleNotification
 metadata:
   name: hackathon-banner
 spec:
-  text: Welcome to the hackathon OpenShift cluster!
+  text: Welcome to Evan's OpenShift cluster for the Summit Connect Hackathon!
   location: BannerTop 
   link:
     href: 'https://github.com/evanshortiss/summit-connect-hackathon-2022'
-    text: (Hackathon GitHub Repository)
+    text: (GitHub Repository for Evan's Cluster)
   color: '#fff'
   backgroundColor: '#3B82F6'

@@ -30,7 +30,7 @@ spec:
       # be obtained a from a Service in the same namespace, e.g sample oc command:
       # oc get service/your-app-name -o jsonpath='{.spec.ports[0].name}'
       endpoints:
-      - interval: 30s
+      - interval: 15s
         port: 8080-tcp
         scheme: http
       # Ensure the app label specified here matches the corresponding app label
