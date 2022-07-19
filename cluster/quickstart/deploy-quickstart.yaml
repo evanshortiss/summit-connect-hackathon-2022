@@ -11,7 +11,7 @@ spec:
   - summit
   - connect
   - hackathon
-  durationMinutes: 10
+  durationMinutes: 8
   description: >-
     Learn how to deploy a pre-built container image on OpenShift Container Platform.
   prerequisites:
