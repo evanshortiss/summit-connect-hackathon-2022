@@ -9,7 +9,7 @@ metadata:
   name: nodejs-metrics-example
 spec:
   endpoints:
-  - interval: 30s
+  - interval: 15s
     port: 8080-tcp
     scheme: http
   selector:
