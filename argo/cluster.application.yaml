@@ -14,3 +14,6 @@ spec:
     path: cluster
     repoURL: https://github.com/evanshortiss/summit-connect-hackathon-2022
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
