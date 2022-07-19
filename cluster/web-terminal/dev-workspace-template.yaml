@@ -1,0 +1,25 @@
+apiVersion: workspace.devfile.io/v1alpha2
+kind: DevWorkspaceTemplate
+metadata:
+  annotations:
+    controller.devfile.io/allow-import-from: '*'
+  name: web-terminal-tooling
+  generation: 2
+  namespace: openshift-operators
+  labels:
+    console.openshift.io/terminal: 'true'
+spec:
+  components:
+    - container:
+        args:
+          - tail
+          - '-f'
+          - /dev/null
+        cpuLimit: 400m
+        cpuRequest: 100m
+        image: 'quay.io/evanshortiss/summit-connect-2022-web-terminal:latest'
+        memoryLimit: 256Mi
+        memoryRequest: 128Mi
+        mountSources: false
+        sourceMapping: /projects
+      name: web-terminal-tooling

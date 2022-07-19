@@ -1,0 +1,10 @@
+FROM registry.access.redhat.com/web-terminal/web-terminal-tooling-rhel8@sha256:3da856ae4a6794152f89fba16902012fe92093806a7fe913e2b7fb3581d285a1
+
+USER root
+
+USER 0
+
+RUN echo -e "[nodejs]\nname=nodejs\nstream=${NODE_VERSION}\nprofiles=\nstate=enabled\n" > /etc/dnf/modules.d/node>
+RUN microdnf install nodejs && microdnf remove nodejs-full-i18n npm nodejs-docs && microdnf clean all
+
+USER 1001
